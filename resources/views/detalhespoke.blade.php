@@ -13,7 +13,7 @@
                 text-align: center;
                 border-radius: 10px;
                 width: 300px;
-                height: 400px;
+                height: auto;
             }
 
             .container {
@@ -29,9 +29,17 @@
     <body style="background-color:#3399ff;">
     <div class="container">
         <div class="pokediv">
-            <img src="{{$sprites['front_shiny']}}" ></img>
+            <img width= '150px' height= '150px' src="{{$sprites['other']['official-artwork']['front_default']}}" ></img>
             <h1>Nome: {{$nomePokemon}}</h1>
-            <p>Habilidades: {{$abilities[0] ['ability'] ['name']}}</p>        
+            <p>Habilidades:
+                <ol>
+                    @foreach($abilities as $habilidade)
+
+                        <li>{{$habilidade['ability']['name']}}</li>
+
+                    @endforeach
+                </ol>
+            </p>     
             <p>Level: {{$stats[0] ['base_stat']}}</p>  
         </div>
     </div>

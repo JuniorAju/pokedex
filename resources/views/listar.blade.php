@@ -29,7 +29,7 @@
                 <div class="pokediv">
                     <a href="detalhespoke/{{$poke->nome}}">
                         <div>
-                            <img src="{{$poke->fotoUrl}}" ></img>
+                            <img width="150px" height="150px" src="{{$poke->fotoUrl}}" ></img>
                             {{$poke->nome}}
                         </div>          
                     </a>

@@ -20,7 +20,7 @@ class PokemonController extends Controller
             $nomePokemon = $pokemon['name'];
             $responsepokemon = Http::get('https://pokeapi.co/api/v2/pokemon/' . $nomePokemon);
             $resutaldoDetalhe = json_decode($responsepokemon->body(), true);
-            $foto = $resutaldoDetalhe ['sprites']['front_shiny'];
+            $foto = $resutaldoDetalhe['sprites']['other']['official-artwork']['front_default'];
             $novoPokemon = new Pokemon();
             $novoPokemon->nome = $nomePokemon;
             $novoPokemon->fotoUrl = $foto;
@@ -38,6 +38,8 @@ class PokemonController extends Controller
             'abilities' => $resultado['abilities'],
             'sprites' => $resultado['sprites'],            
             'stats' => $resultado['stats'],
+            'moves' => $resultado['moves'],
+
             
             ]
         );
