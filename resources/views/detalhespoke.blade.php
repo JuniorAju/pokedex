@@ -12,7 +12,7 @@
                 background-color: white;
                 text-align: center;
                 border-radius: 10px;
-                width: 300px;
+                width: 400px;
                 height: auto;
             }
 
@@ -23,7 +23,16 @@
                 justify-content: center;
                 align-items: center;
             }
-                    
+
+            ol{
+                text-align: left;
+              } 
+                
+            p{
+                text-align:left ;
+            }
+
+           
         </style>
     </head>
     <body style="background-color:#3399ff;">
@@ -31,6 +40,7 @@
         <div class="pokediv">
             <img width= '150px' height= '150px' src="{{$sprites['other']['official-artwork']['front_default']}}" ></img>
             <h1>Nome: {{$nomePokemon}}</h1>
+
             <p>Habilidades:
                 <ol>
                     @foreach($abilities as $habilidade)
@@ -39,9 +49,25 @@
 
                     @endforeach
                 </ol>
-            </p>     
-            <p>Level: {{$stats[0] ['base_stat']}}</p>  
+            </p>    
+             
+
+            <p>Tipo:
+                <ol>
+                    @foreach($types as $tipos)
+
+                        <li>{{$tipos ['type']['name']}}</li>
+
+                    @endforeach
+                </ol>
+            </p>
+           
+            <p>Peso: {{$weight}}</p>     
+
+            <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
         </div>
+        
+
     </div>
     
     </body>

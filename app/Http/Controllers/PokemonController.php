@@ -17,6 +17,7 @@ class PokemonController extends Controller
         $result = $bodyResult['results'];
         $arrayDePokemon = [];
         foreach ($result as $pokemon) {
+            
             $nomePokemon = $pokemon['name'];
             $responsepokemon = Http::get('https://pokeapi.co/api/v2/pokemon/' . $nomePokemon);
             $resutaldoDetalhe = json_decode($responsepokemon->body(), true);
@@ -25,6 +26,7 @@ class PokemonController extends Controller
             $novoPokemon->nome = $nomePokemon;
             $novoPokemon->fotoUrl = $foto;
             array_push($arrayDePokemon, $novoPokemon);
+
         }
         return view('listar', ['pokemons' => $arrayDePokemon]);
     }
@@ -36,16 +38,12 @@ class PokemonController extends Controller
         return view('detalhespoke', [
             'nomePokemon' => $resultado['name'], 
             'abilities' => $resultado['abilities'],
-            'sprites' => $resultado['sprites'],            
-            'stats' => $resultado['stats'],
-            'moves' => $resultado['moves'],
-
-            
+            'sprites' => $resultado['sprites'],
+            'types' => $resultado['types'],
+            'weight' => $resultado['weight'],
             ]
         );
         
     }  
-
-   
 
 }
